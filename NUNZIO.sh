@@ -135,7 +135,7 @@ InstalM() {
     non="non"
 
     if [ "$avis" = "$oui" ]; then
-        sudo apt install -y python3-pip python3-venv libusb-1.0-0 libudev-dev
+         apt install -y python3-pip python3-venv libusb-1.0-0 libudev-dev
         cd ~
         read -p "Donne le nom de ton environnement python : " nom_envi
         
@@ -151,9 +151,9 @@ InstalM() {
         echo "Vérification que MVT fonctionne........"
         mvt-ios --help && mvt-android --help
         
-        sudo apt install -y android-tools-adb android-tools-fastboot
+         apt install -y android-tools-adb android-tools-fastboot
         cd ~/mvt		
-        sudo apt install -y android-platform-tools-base
+         apt install -y android-platform-tools-base
     else 
         echo "Tu as déjà installé MVT"
     fi
@@ -197,7 +197,7 @@ adb backup -apk -shared -all -f ~/mvt/"$choix_f"
 mv ~/mvt/"$choix_f" ~/mvt/"$choix_sauv"
 git clone https://github.com/nelenkov/android-backup-extractor.git
 cd android-backup-extractor
-sudo apt install -y maven
+ apt install -y maven
 mvn package
 cd target/
 chmod  777 abe.jar #changer les permissions pour qqchose de plus 'restrictif'
