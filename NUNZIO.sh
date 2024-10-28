@@ -221,19 +221,18 @@ menu
 #############################################################################################################################3
 I_IOC() {
 echo "Installer les IOC"
-read -p "Dossier des IOC" D_IOC   #supprimer la possibilité de recreer le dossier IOC a chaque utilisation, avoir un seul dossier déjà créé 
-mkdir ~/mvt/"$D_IOC" #a supprimer 
-cd ~/mvt/"$D_IOC" # a modifier enajouter le nom du dossier déjà présent 
-#wget https://raw.githubusercontent.com/AmnestyTech/investigations/master/2021-07-18_nso/pegasus.stix2 && wget  wget https://raw.githubusercontent.com/AmnestyTech/investigations/master/2021-12-16_cytrox/cytrox.stix2
+read -p "Dossier des IOC" D_IOC   
+mkdir ~/mvt/"$D_IOC" 
+cd ~/mvt/"$D_IOC" 
+wget https://raw.githubusercontent.com/AmnestyTech/investigations/master/2021-07-18_nso/pegasus.stix2 && wget  wget https://raw.githubusercontent.com/AmnestyTech/investigations/master/2021-12-16_cytrox/cytrox.stix2
 download-iocs  
-# premiere idee, aller créer une boucle quie prend tous les fichiers finissants par .stix2 
 
 
 
-    # Créer le dossier spécifié par l'utilisateur dans le répertoire ~/mvt
+
+
    # mkdir -p ~/mvt/"$extra_d"
 
-    # Extraire le fichier info.tar dans le dossier spécifié
     #tar -xvf ~/mvt/"$choix_sauv"/info.tar -C ~/mvt/"$extra_d"
 menu
 }
@@ -246,26 +245,13 @@ Forensic_IOC() {
     adb start-server
     adb kill-server
     
-    # Utilise les variables globales exportées par SauvT
 
-    # Assure-toi que D_IOC est défini, sinon ajoute un test
-   # if [ -z "$D_IOC" ]; then
-  #      echo "La variable D_IOC n'est pas définie. Assurez-vous qu'elle est définie avant de lancer le script."
- #       return
-#    fi
-
-    # Se déplacer vers le répertoire des IOC
-    #cd ~/mvt/"$D_IOC"/ || { echo "Erreur: Impossible de se déplacer vers ~/mvt/$D_IOC"; return; }
-
-    # Exécute la commande mvt-android avec le chemin correct vers les IOC
+ 
     mvt-android check-adb --iocs ~/mvt/ioc/ --output ~/mvt/
 
-    # Demander le mot de passe de debug (backup)
     read -p "Rentre le mot de passe du debug : " mdp
 
-    # Si tu veux utiliser le mot de passe pour une autre commande, décommente la ligne suivante :
-    # mvt-android check-backup --backup-password "$mdp" --iocs /home/adm-forensics/IOC --output ~/mvt/"$choix_sauv"
-    
+
     echo "Analyse Forensic avec MVT terminée."
 menu
 }
@@ -283,25 +269,19 @@ menu
 apk() {
     echo "Analyse APK automatique..."
 
-    # Définition du dossier principal
     Info_Phone="Info_phone"
     Base_Dir=~/mvt/"$Info_Phone" 
 
-    # Création du dossier principal si nécessaire
-    mkdir -p "$Base_Dir"  #Ajouter le dossier 'Resultats' déjà existant
+    mkdir -p "$Base_Dir"  
 
-    # Génération d'un nom de dossier horodaté pour éviter les conflits
     nom_doc=$(date +"%Y%m%d_%H%M%S")
 
-    # Chemin du dossier de sortie
     Output_Dir="$Base_Dir/$nom_doc"
 
-    # Création du dossier pour les résultats
     mkdir -p "$Output_Dir"
 
     echo "Les données se trouvent dans $Output_Dir"
 
-    # Téléchargement des APKs et analyse avec VirusTotal
     echo "Téléchargement des APKs et analyse avec VirusTotal en cours..."
     MVT_VT_API_KEY="3d7181e63ff474cf34dceaf40d943a74bca7b47aad946fbb8615b657cc0555c3" \
     mvt-android download-apks --output "$Output_Dir" --virustotal
@@ -314,45 +294,7 @@ apk() {
     echo "Analyse terminée. Les résultats se trouvent dans $Output_Dir/"
 }
 
-#apk() {
- #   echo "Analyse apk...."
-  #  Info_Phone="Info_phone"
-    
-    # Crée le dossier principal si besoin
- #   mkdir -p ~/mvt/"$Info_Phone"
-    
-    # Demande le nom du dossier à l'utilisateur
- #   read -p "Nom Dossier Information tel: " nom_doc
-    
-    # Vérifie si le dossier n'existe pas encore
- #   if [ ! -e ~/mvt/"$Info_Phone"/"$nom_doc" ]; then 
-  #      mkdir -p ~/mvt/"$Info_Phone"/"$nom_doc"
-   #     echo "Les données se trouvent dans ~/mvt/$Info_Phone/$nom_doc"
-  #  else
-   #     echo "Le dossier '$nom_doc' existe déjà."
-   # fi 
 
-    # Téléchargement des APKs dans le dossier spécifié
-    #echo "Téléchargement des APKs dans ~/mvt/$Info_Phone/$nom_doc/apks.json"
-    #mvt-android download-apks -a --output ~/mvt/"$Info_Phone"/"$nom_doc"/apks.json 
-
-    #if [ $? -ne 0 ]; then
-     #   echo "Échec du téléchargement des APKs."
-      #  return 1
-    #fi
-
-    # Analyse des APKs téléchargées avec VirusTotal en utilisant la clé API intégrée
-    #echo "Analyse des APKs avec VirusTotal en cours..."
-    #MVT_VT_API_KEY="3d7181e63ff474cf34dceaf40d943a74bca7b47aad946fbb8615b657cc0555c3" \
-    #mvt-android -vt-upload --apk-json ~/mvt/"$Info_Phone"/"$nom_doc"/apks.json
-    
-   # if [ $? -ne 0 ]; then
-    #    echo "Échec de l'analyse avec VirusTotal."
-     #   return 1
-    #fi
-
-   # echo "Analyse terminée. Les résultats se trouvent dans ~/mvt/$Info_Phone/$nom_doc/"
-#}
 
 ###################################################################################################################
 #                                                   FAIRE LA MAJ MVT ANDROID
@@ -434,7 +376,6 @@ NC='\033[0m' # Pas de couleur
 
 
 
-# Introduction du programme NUNZIO avec couleurs
 
 clear
 echo " "
@@ -472,7 +413,6 @@ echo -e "${GREEN}#${NC}                                                      ${G
 echo -e "${GREEN}##########################################################${NC}"
 echo ""
 
-# Pause pour laisser l'utilisateur lire
 read -p "Appuyez sur Entrée pour commencer..."
 
 menu
