@@ -283,7 +283,7 @@ apk() {
     echo "Les données se trouvent dans $Output_Dir"
 
     echo "Téléchargement des APKs et analyse avec VirusTotal en cours..."
-    MVT_VT_API_KEY="3d7181e63ff474cf34dceaf40d943a74bca7b47aad946fbb8615b657cc0555c3" \
+    MVT_VT_API_KEY="" \ #Mettre votre Key virustotal
     mvt-android download-apks --output "$Output_Dir" --virustotal
 
     if [ $? -ne 0 ]; then
