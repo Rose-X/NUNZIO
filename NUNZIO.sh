@@ -375,17 +375,20 @@ NC='\033[0m' # Pas de couleur
 
 
 clear
-echo " "
-echo "          \     /      "
-echo "         -- Nunzio -- "
-echo "        /_\\ | /_\\    "
-echo "           / | \\       "
-echo "          /  |  \\      "
-echo "         *   |   *     "
-echo "            / \\        "
-echo "           /   \\       "
-echo "          /     \\      "
-echo " "
+echo -e "\e[32m"  
+echo "           \    |    /      "
+echo "          --  NUNZIO  --    "
+echo -e "\e[34m"  # Bleu
+echo "          / \   |   / \\    "
+echo "         /__ \\  |  /__\\   "
+echo -e "\e[32m" 
+echo "           / \\  |  / \\    "
+echo "          /   \\ | /   \\   "
+echo "         *     \\|/     *   "
+echo "                |           "
+echo "               / \\          "
+echo "              /   \\         "
+echo -e "\e[0m"   
 
 
 
