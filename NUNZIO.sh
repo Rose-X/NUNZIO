@@ -42,8 +42,8 @@ echo -e "${RESET}"
     
     
     echo -e "${GREEN}##########################################################${NC}"
-    echo -e "${GREEN}#                    ${YELLOW}MENU PRINCIPAL${GREEN}                     #${NC}"
-    echo -e "${GREEN}#                    ${YELLOW}By Rose_X${GREEN}                     #${NC}"
+    echo -e "${GREEN}#                    ${YELLOW}MENU PRINCIPAL${GREEN}                #${NC}"
+    echo -e "${GREEN}#                    ${YELLOW} By Rose_X  ${GREEN}                  #${NC}"
 
     echo -e "${GREEN}##########################################################${NC}"
     echo ""
