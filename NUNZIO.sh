@@ -392,7 +392,7 @@ echo -e "${CYAN}     | | | | | | | | (_| | (_) |${NC}"
 echo -e "${RED}     |_| |_|_|_| |_|\__,_|\___/ ${NC}"
 echo -e "                                       "
 echo -e "${BLUE}             1933-2024             ${NC} "
-echo -e "${GREEN}           J U N G L E          ${NC}"
+echo -e "${GREEN}          NUNZIO V1.5  J U N G L E  2025    ${NC}"
 
 echo -e "${GREEN}##########################################################${NC}"
 echo -e "${GREEN}#${NC}                                                      ${GREEN}#${NC}"
